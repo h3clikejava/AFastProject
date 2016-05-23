@@ -34,6 +34,13 @@ public class BaseFragment extends Fragment implements IKeyboardStateControl,
     }
 
     @Override
+    public void showLoadingInfoDialog(String info) {
+        if(getActivity() != null && getActivity() instanceof BaseActivity) {
+            ((BaseActivity)getActivity()).showLoadingInfoDialog(info);
+        }
+    }
+
+    @Override
     public void showUncancelDialog() {
         if(getActivity() != null && getActivity() instanceof BaseActivity) {
             ((BaseActivity)getActivity()).showUncancelDialog();

@@ -6,6 +6,7 @@ package com.h3c.afastproject.base.baseInterface;
 
 public interface IProcessDialog {
     void showLoadingDialog();
+    void showLoadingInfoDialog(String info);
     void showUncancelDialog();
     void hideProcessDialog();
 }

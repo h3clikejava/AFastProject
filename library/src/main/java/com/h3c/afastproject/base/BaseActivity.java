@@ -11,8 +11,11 @@ import android.view.inputmethod.InputMethodManager;
 import com.h3c.afastproject.R;
 import com.h3c.afastproject.base.baseInterface.IKeyboardStateControl;
 import com.h3c.afastproject.base.baseInterface.IProcessDialog;
+import com.h3c.afastproject.dialog.LoadingDialog;
 
 import butterknife.ButterKnife;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.functions.Action0;
 
 /**
  * Created by H3c on 16/5/22.
@@ -57,7 +60,24 @@ public abstract class BaseActivity extends RequestPermissionActivity
 
     @Override
     public void showLoadingDialog() {
+        showLoadingInfoDialog(null);
+    }
 
+    private LoadingDialog mLoadingDialog;
+    @Override
+    public void showLoadingInfoDialog(String info) {
+        if(mLoadingDialog == null) {
+            mLoadingDialog = new LoadingDialog();
+            mLoadingDialog.setCancelable(false);
+        }
+
+        mLoadingDialog.setContent(info);
+        if(mLoadingDialog.isResumed()
+                || mLoadingDialog.isAdded()) {
+            return;
+        }
+
+        mLoadingDialog.show(getSupportFragmentManager(), "LoadingDialog");
     }
 
     @Override
@@ -67,7 +87,14 @@ public abstract class BaseActivity extends RequestPermissionActivity
 
     @Override
     public void hideProcessDialog() {
-
+        AndroidSchedulers.mainThread().createWorker().schedule(new Action0() {
+            @Override
+            public void call() {
+                if(mLoadingDialog != null) {
+                    mLoadingDialog.dismiss();
+                }
+            }
+        });
     }
 
     @Override

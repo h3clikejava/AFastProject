@@ -1,6 +1,7 @@
 package com.h3c.afastproject;
 
 import android.app.Application;
+import android.content.Context;
 
 import com.jakewharton.threetenabp.AndroidThreeTen;
 
@@ -17,5 +18,9 @@ public class AFastProject {
 
         // 初始化Java8时间类
         AndroidThreeTen.init(context);
+    }
+
+    public static Context getApplicationContext() {
+        return gContext;
     }
 }
