@@ -31,7 +31,10 @@ public abstract class BaseActivity extends RequestPermissionActivity
         getIntentDataInActivityBase(savedInstanceState);
         super.onCreate(savedInstanceState);
 
-        setContentView(initResLayout());
+        int resLayout = initResLayout();
+        if(resLayout > 0) {
+            setContentView(resLayout);
+        }
         initView();
         initData();
     }
