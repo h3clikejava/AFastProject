@@ -13,28 +13,53 @@ import rx.subjects.PublishSubject;
  */
 
 public class TaskUtils {
-    public static void timer(long time, TimeUnit timeUnit, Action1 action) {
-        if(action == null || timeUnit == null) return;
-        PublishSubject.create().timer(time, timeUnit).subscribe(action);
+    public static void timer(long time, TimeUnit timeUnit, final Runnable runnable) {
+        if(runnable == null || timeUnit == null) return;
+        PublishSubject.create().timer(time, timeUnit).subscribe(new Action1<Long>() {
+            @Override
+            public void call(Long aLong) {
+                runnable.run();
+            }
+        });
     }
 
-    public static void runOnUI(Action0 action) {
-        if(action == null) return;
-        AndroidSchedulers.mainThread().createWorker().schedule(action);
+    public static void runOnUI(final Runnable runnable) {
+        if(runnable == null) return;
+        AndroidSchedulers.mainThread().createWorker().schedule(new Action0() {
+            @Override
+            public void call() {
+                runnable.run();
+            }
+        });
     }
 
-    public static void runIO(Action0 action) {
-        if(action == null) return;
-        Schedulers.io().createWorker().schedule(action);
+    public static void runIO(final Runnable runnable) {
+        if(runnable == null) return;
+        Schedulers.io().createWorker().schedule(new Action0() {
+            @Override
+            public void call() {
+                runnable.run();
+            }
+        });
     }
 
-    public static void runComputation(Action0 action) {
-        if(action == null) return;
-        Schedulers.computation().createWorker().schedule(action);
+    public static void runComputation(final Runnable runnable) {
+        if(runnable == null) return;
+        Schedulers.computation().createWorker().schedule(new Action0() {
+            @Override
+            public void call() {
+                runnable.run();
+            }
+        });
     }
 
-    public static void runNewThread(Action0 action) {
-        if(action == null) return;
-        Schedulers.newThread().createWorker().schedule(action);
+    public static void runNewThread(final Runnable runnable) {
+        if(runnable == null) return;
+        Schedulers.newThread().createWorker().schedule(new Action0() {
+            @Override
+            public void call() {
+                runnable.run();
+            }
+        });
     }
 }
