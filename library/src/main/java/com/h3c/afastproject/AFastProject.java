@@ -16,10 +16,13 @@ import java.util.List;
 public class AFastProject {
     private static Application gContext;
     public static String APPTAG = "H3c";
+    public static boolean DEBUG = false;
 
     // 初始化全局Context
-    public static void init(Application context) {
+    // debug 会控制是否输出日志
+    public static void init(Application context, boolean isDebug) {
         gContext = context;
+        DEBUG = isDebug;
 
         // 初始化Java8时间类
         AndroidThreeTen.init(context);

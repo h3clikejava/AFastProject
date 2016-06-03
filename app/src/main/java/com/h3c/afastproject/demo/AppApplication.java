@@ -13,6 +13,6 @@ public class AppApplication extends Application {
     public void onCreate() {
         super.onCreate();
 
-        AFastProject.init(this);
+        AFastProject.init(this, BuildConfig.DEBUG);
     }
 }
