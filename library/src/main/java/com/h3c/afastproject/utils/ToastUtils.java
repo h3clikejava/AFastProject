@@ -5,8 +5,6 @@ import android.widget.Toast;
 
 import com.h3c.afastproject.AFastProject;
 
-import rx.functions.Action0;
-
 /**
  * Created by H3c on 16/5/24.
  */
@@ -16,9 +14,9 @@ public class ToastUtils {
         show(StringUtils.getString(stringRes));
     }
     public static void show(final String info) {
-        TaskUtils.runOnUI(new Action0() {
+        TaskUtils.runOnUI(new Runnable() {
             @Override
-            public void call() {
+            public void run() {
                 Toast.makeText(AFastProject.getApplicationContext(), info, Toast.LENGTH_SHORT).show();
             }
         });

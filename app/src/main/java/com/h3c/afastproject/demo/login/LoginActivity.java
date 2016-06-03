@@ -15,7 +15,6 @@ import com.wilddog.client.Wilddog;
 import java.util.concurrent.TimeUnit;
 
 import butterknife.OnClick;
-import rx.functions.Action1;
 
 /**
  * Created by H3c on 16/5/22.
@@ -38,9 +37,9 @@ public class LoginActivity extends BaseActivity implements LoginContract.View {
     protected void initView() {
         showLoadingDialog();
 
-        TaskUtils.timer(5, TimeUnit.SECONDS, new Action1() {
+        TaskUtils.timer(5, TimeUnit.SECONDS, new Runnable() {
             @Override
-            public void call(Object o) {
+            public void run() {
                 hideProcessDialog();
             }
         });
