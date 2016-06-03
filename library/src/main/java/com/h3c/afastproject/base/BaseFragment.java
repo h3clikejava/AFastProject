@@ -1,5 +1,6 @@
 package com.h3c.afastproject.base;
 
+import android.content.Context;
 import android.support.v4.app.Fragment;
 
 import com.h3c.afastproject.base.baseInterface.IKeyboardStateControl;
@@ -12,6 +13,14 @@ import com.h3c.afastproject.base.baseInterface.IProcessDialog;
 
 public class BaseFragment extends Fragment implements IKeyboardStateControl,
         IProcessDialog {
+
+    public Context getContext() {
+        if(getActivity() != null && getActivity() instanceof BaseActivity) {
+            return ((BaseActivity) getActivity()).getContext();
+        }
+        return null;
+    }
+
     @Override
     public void showKeyboard() {
         if(getActivity() != null && getActivity() instanceof BaseActivity) {

@@ -61,6 +61,10 @@ public abstract class BaseActivity extends RequestPermissionActivity
         }
     }
 
+    public Context getContext() {
+        return this;
+    }
+
     @Override
     public void showLoadingDialog() {
         showLoadingInfoDialog(null);
