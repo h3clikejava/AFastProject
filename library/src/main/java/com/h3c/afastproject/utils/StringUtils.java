@@ -9,6 +9,7 @@ import java.net.URLDecoder;
 import java.net.URLEncoder;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.text.DecimalFormat;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -142,4 +143,18 @@ public class StringUtils {
         }
         return true;
     }
+
+    public static String numFormatDot(double num, int formatDotCount) {
+        StringBuilder sb = new StringBuilder("##0");
+        if(formatDotCount > 0) {
+            sb.append(".");
+        }
+        for (int n = 0; n < formatDotCount; n++) {
+            sb.append("0");
+        }
+
+        DecimalFormat decimalFormat = new DecimalFormat(sb.toString());
+        return decimalFormat.format(num);
+    }
+
 }
