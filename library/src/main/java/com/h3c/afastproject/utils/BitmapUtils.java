@@ -19,7 +19,7 @@ public class BitmapUtils {
         return BitmapFactory.decodeResource(ResourceUtils.getResources(), resId);
     }
 
-    public static Bitmap changeBitmapRealColor(@DrawableRes int redId, @ColorInt int toColor) {
+    public static Bitmap changeBitmapColor(@DrawableRes int redId, @ColorInt int toColor) {
         return changeBitmapColor(getBmpFromRes(redId), toColor);
     }
 
