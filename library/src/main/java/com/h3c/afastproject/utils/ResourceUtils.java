@@ -2,7 +2,6 @@ package com.h3c.afastproject.utils;
 
 import android.content.res.Resources;
 import android.content.res.TypedArray;
-import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.support.annotation.ColorRes;
 
@@ -23,7 +22,7 @@ public class ResourceUtils {
     }
 
     public static int getAppMainColor() {
-        return Color.BLACK;
+        return AFastProject.getAppMainColor();
     }
 
     public static int getColor(@ColorRes int resource) {

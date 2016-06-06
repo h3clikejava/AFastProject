@@ -3,11 +3,13 @@ package com.h3c.afastproject.base;
 import android.content.Context;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.ColorInt;
 import android.support.annotation.Nullable;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 
+import com.h3c.afastproject.AFastProject;
 import com.h3c.afastproject.R;
 import com.h3c.afastproject.base.baseInterface.IKeyboardStateControl;
 import com.h3c.afastproject.base.baseInterface.IProcessDialog;
@@ -30,6 +32,11 @@ public abstract class BaseActivity extends RequestPermissionActivity
         overridePendingTransition(getEnterTransitionInAnim(), getEnterTransitionOutAnim());
         getIntentDataInActivityBase(savedInstanceState);
         super.onCreate(savedInstanceState);
+
+        int primaryColor = AFastProject.getPrimaryDarkColor();
+        if(primaryColor >= 0) {
+            setPrimaryDarkColor(primaryColor);
+        }
 
         int resLayout = initResLayout();
         if(resLayout > 0) {
@@ -54,7 +61,7 @@ public abstract class BaseActivity extends RequestPermissionActivity
         ButterKnife.bind(this);
     }
 
-    public void setPrimaryDarkColor(int color) {
+    public void setPrimaryDarkColor(@ColorInt int color) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             getWindow().addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
             getWindow().setStatusBarColor(color);

@@ -3,6 +3,8 @@ package com.h3c.afastproject;
 import android.app.ActivityManager;
 import android.app.Application;
 import android.content.Context;
+import android.graphics.Color;
+import android.support.annotation.ColorInt;
 
 import com.h3c.afastproject.utils.DeviceUtils;
 import com.jakewharton.threetenabp.AndroidThreeTen;
@@ -35,6 +37,22 @@ public class AFastProject {
     public static Context getApplicationContext() {
         return gContext;
     }
+
+    private static int gPrimaryDarkColor = -1;
+    public static void setPrimaryDarkColor(@ColorInt int primaryColor) {
+        gPrimaryDarkColor = primaryColor;
+    }
+    public static int getPrimaryDarkColor() {
+        return gPrimaryDarkColor;
+    }
+    private static int gAppMainColor = Color.BLACK;
+    public static void setAppMainColor(@ColorInt int appMainColor) {
+        gAppMainColor = appMainColor;
+    }
+    public static int getAppMainColor() {
+        return gAppMainColor;
+    }
+
 
     /**
      * 检查当前进程是否为主进程
