@@ -38,11 +38,11 @@ public class AFastProject {
         return gContext;
     }
 
-    private static int gPrimaryDarkColor = -1;
+    private static Integer gPrimaryDarkColor;
     public static void setPrimaryDarkColor(@ColorInt int primaryColor) {
         gPrimaryDarkColor = primaryColor;
     }
-    public static int getPrimaryDarkColor() {
+    public static Integer getPrimaryDarkColor() {
         return gPrimaryDarkColor;
     }
     private static int gAppMainColor = Color.BLACK;

@@ -1,6 +1,7 @@
 package com.h3c.afastproject.demo;
 
 import android.app.Application;
+import android.graphics.Color;
 
 import com.h3c.afastproject.AFastProject;
 
@@ -14,5 +15,6 @@ public class AppApplication extends Application {
         super.onCreate();
 
         AFastProject.init(this, BuildConfig.DEBUG);
+        AFastProject.setPrimaryDarkColor(Color.RED);
     }
 }

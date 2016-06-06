@@ -33,8 +33,8 @@ public abstract class BaseActivity extends RequestPermissionActivity
         getIntentDataInActivityBase(savedInstanceState);
         super.onCreate(savedInstanceState);
 
-        int primaryColor = AFastProject.getPrimaryDarkColor();
-        if(primaryColor >= 0) {
+        Integer primaryColor = AFastProject.getPrimaryDarkColor();
+        if(primaryColor != null) {
             setPrimaryDarkColor(primaryColor);
         }
 
@@ -65,6 +65,14 @@ public abstract class BaseActivity extends RequestPermissionActivity
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             getWindow().addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
             getWindow().setStatusBarColor(color);
+        }
+    }
+
+    public void hideToolbar() {
+        if(getSupportActionBar() != null) {
+            getSupportActionBar().hide();
+        } else if(getActionBar() != null) {
+            getActionBar().hide();
         }
     }
 
