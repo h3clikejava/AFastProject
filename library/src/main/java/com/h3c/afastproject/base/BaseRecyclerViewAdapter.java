@@ -23,7 +23,7 @@ import java.util.List;
  * Created by H3c on 16/5/22.
  */
 
-public abstract class BaseRecycleViewAdapter<E, VH extends RecyclerView.ViewHolder>
+public abstract class BaseRecyclerViewAdapter<E, VH extends RecyclerView.ViewHolder>
         extends RecyclerView.Adapter<VH> implements View.OnClickListener {
     public static final int ANIM_NONE = 0;
     public static final int ANIM_SWING_IN_BOTTOM = 1;
@@ -38,14 +38,14 @@ public abstract class BaseRecycleViewAdapter<E, VH extends RecyclerView.ViewHold
     public Context mContext;
     public List<E> mData;
 
-    public BaseRecycleViewAdapter() {}
-    public BaseRecycleViewAdapter(Context context) {
+    public BaseRecyclerViewAdapter() {}
+    public BaseRecyclerViewAdapter(Context context) {
         this.mContext = context;
     }
-    public BaseRecycleViewAdapter(List<E> data) {
+    public BaseRecyclerViewAdapter(List<E> data) {
         setData(data);
     }
-    public BaseRecycleViewAdapter(Context context, List<E> data) {
+    public BaseRecyclerViewAdapter(Context context, List<E> data) {
         this(context);
         setData(data);
     }
